@@ -1,5 +1,7 @@
 package com.udacity.sandwichclub.utils;
 
+import android.util.Log;
+
 import com.udacity.sandwichclub.model.Sandwich;
 
 import org.json.JSONArray;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public class JsonUtils {
 
+    private final static String LOG_TAG = JsonUtils.class.getSimpleName();
     private final static String NAME = "name";
     private final static String MAIN_NAME = "mainName";
     private final static String ALSO_KNOWN_AS = "alsoKnownAs";
@@ -55,10 +58,8 @@ public class JsonUtils {
     }
 
     private static List<String> getListOfStringFromJSONArray(JSONArray jsonArray) throws JSONException {
-        if(jsonArray == null)
-            return null;
-        List<String> result = new ArrayList<>(jsonArray.length());
-        for(int i = 0; i < result.size(); i++)
+        List<String> result = new ArrayList<>();
+        for(int i = 0; i < jsonArray.length(); i++)
             result.add(jsonArray.getString(i));
         return result;
     }
